@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.View.Setting"
+             NavigationPage.HasBackButton="False"
+             >
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" >
+            <StackLayout.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Right" Swiped="SwipeGestureRecognizer_Swiped"  />
+            </StackLayout.GestureRecognizers>
+            <Label Text="Costom" VerticalTextAlignment="Center" TextColor="white" FontAttributes="Bold" FontSize="30"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Margin="10" Spacing="20">
+
+            <Label Text="Are you a boy or girl?" FontSize="Large" FontAttributes="Bold" HorizontalTextAlignment="Center"></Label>
+            <StackLayout Orientation="Horizontal" RadioButtonGroup.GroupName="Gender" WidthRequest="100" HorizontalOptions="Center" >
+                <RadioButton x:Name="Girl" Content="Girl" Value="Girl" CheckedChanged="Girl_CheckedChanged"></RadioButton>
+                <RadioButton Content="Boy" Value="Boy"></RadioButton>
+            </StackLayout>
+
+            <Button x:Name="CountSteps" Text="Count Step" TextTransform="None" FontSize="Large" CornerRadius="100" BackgroundColor="Plum" Clicked="Count_Clicked"></Button>
+            <Button x:Name="CountBMI" Text="Count BMI" TextTransform="None" FontSize="Large" CornerRadius="100" BackgroundColor="Plum" Clicked="Count_Clicked"
+            ></Button>
+            <Button x:Name="RecordHeartRate" Text="Heart Rate" TextTransform="None" FontSize="Large" CornerRadius="100" BackgroundColor="Plum" Clicked="Count_Clicked"
+            ></Button>
+            <Button x:Name="RecordBloodPressure" Text="Blood Pressure" TextTransform="None" FontSize="Large" CornerRadius="100 " BackgroundColor="Plum" Clicked="Count_Clicked"></Button>
+            <Button x:Name="RecordMedicine_Reminder" Text="Medicine Reminder" TextTransform="None" FontSize="Large" CornerRadius="100" BackgroundColor="Plum" Clicked="Count_Clicked"
+            ></Button>
+            <Button x:Name="RecordMenstruation" Text="Menstruation" TextTransform="None" FontSize="Large" CornerRadius="100" BackgroundColor="Plum" Clicked="Count_Clicked"
+            IsEnabled="{Binding Source={x:Reference Girl}, Path=IsChecked}"
+            ></Button>
+            <Button x:Name="Set" Text="Thank You!" HorizontalOptions="Center" FontSize="Large" WidthRequest="200" Clicked="Set_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

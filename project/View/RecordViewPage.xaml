@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar" 
+             xmlns:local="clr-namespace:project.ModelAndData"
+             x:Class="project.RecordViewPage"
+             NavigationPage.HasBackButton="False">
+
+        <ContentPage.BindingContext>
+        <local:DataRecord/>
+    </ContentPage.BindingContext>
+
+ 
+    <NavigationPage.TitleView>
+    
+        <StackLayout Orientation="Horizontal" >
+            <StackLayout.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Right" Swiped="SwipeGestureRecognizer_Swiped"  />
+            </StackLayout.GestureRecognizers>
+            <Label Text="Record " VerticalTextAlignment="Center" TextColor="white" FontAttributes="Bold" FontSize="30"/>
+            <BoxView  HorizontalOptions="CenterAndExpand"/>
+            <Label x:Name="Date" VerticalTextAlignment="End"  HorizontalOptions="End" TextColor="white" FontAttributes="Bold" FontSize="15" Margin="0,0,0,5" ></Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout Margin="20">
+
+            <Frame x:Name="Calender" HeightRequest="300" WidthRequest="90" Padding="0">
+                <controls:Calendar
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
+                x:Name="GetCanlendar"
+               
+                />
+            </Frame>
+            <Button Text="Edit" BackgroundColor="Azure" HeightRequest="50" WidthRequest="120" HorizontalOptions="EndAndExpand"
+                    CornerRadius="40" Clicked="Button_Clicked">
+
+            </Button>
+            <Frame x:Name="View_Steps" BackgroundColor="Transparent" Padding="0">
+                <Label x:Name="Steps" FontSize="30"></Label>
+            </Frame>
+
+            <Frame
+            Margin="3,5,0,10" BackgroundColor="Transparent">
+                <StackLayout>
+                    <Label x:Name="BMI" Text="{Binding Height_var,StringFormat='BMI:{0}'}" FontSize="25"  ></Label>
+                        <Label x:Name="Diet" Text="Diet: 三餐" FontSize="25" ></Label>
+
+                       
+                        <Label Text="Morning" FontSize="Medium"/>
+                        <StackLayout  x:Name="Morning_view" IsVisible="false" >
+                        <Label x:Name="Morning_Text"  FontSize="Medium"/>
+                            <Frame HeightRequest="90" Padding="0">
+                                <Image x:Name="Morning_Photo" Aspect="AspectFill"/>
+                            </Frame>
+
+                            <Button x:Name="Morning_voice"  HorizontalOptions="CenterAndExpand" Text="Play"  CornerRadius="100" Clicked="voice_Clicked" VerticalOptions="Fill" HeightRequest="90"/>
+                      
+                    </StackLayout>
+
+
+                        <Label Text="Lunch" FontSize="Medium" />
+                        <StackLayout  x:Name="Lunch_view"  IsVisible="false">
+                        <Label x:Name="Lunch_Text"/>
+                            <Frame HeightRequest="90" Padding="0">
+                                <Image x:Name="Lunch_Photo" Aspect="AspectFill" Source="Screenshot.png"/>
+                            </Frame>
+
+                            <Button x:Name="Lunch_voice"  HorizontalOptions="CenterAndExpand" Text="Play"  CornerRadius="100" Clicked="voice_Clicked" VerticalOptions="Fill" HeightRequest="90"/>
+                        </StackLayout>
+
+                        <Label Text="Dinner"  FontSize="Medium"/>
+                        <StackLayout  x:Name="Dinner_view"  IsVisible="false" >
+                            <Label x:Name="Dinner_Text"/>
+                            <Frame HeightRequest="90" Padding="0">
+                                <Image x:Name="Dinner_Photo" Aspect="AspectFill" Source="Screenshot.png"/>
+                            </Frame>
+
+                            <Button x:Name="Dinner_voice"  HorizontalOptions="CenterAndExpand" Text="Play"  CornerRadius="100" Clicked="voice_Clicked" VerticalOptions="Fill" HeightRequest="90"/>
+                    </StackLayout>
+
+                        <Label Text="Extra" FontSize="Medium"/>
+                        <StackLayout  x:Name="Extra_view"  IsVisible="false">
+                            <Label x:Name="Extra_Text"/>
+                            <Frame HeightRequest="90" Padding="0">
+                                <Image x:Name="Extra_Photo" Aspect="AspectFill" Source="Screenshot.png"/>
+                            </Frame>
+
+                            <Button x:Name="Extra_voice"  HorizontalOptions="CenterAndExpand" Text="Play"  CornerRadius="100" Clicked="voice_Clicked" VerticalOptions="Fill" HeightRequest="90"/>
+                        </StackLayout>
+                        <StackLayout BackgroundColor="Transparent" x:Name="View_HeartRate">
+                        <Label  Text="Heart rate:" FontSize="25"></Label>
+                            <Label  x:Name="View_HeartRate_content" FontSize="Medium"/>
+                        </StackLayout>
+                        <StackLayout BackgroundColor="Transparent" x:Name="View_BloodPressure">
+                            <Label  Text="Blood pressure:" FontSize="25" ></Label>
+                            <Label x:Name="View_BloodPressure_content" FontSize="Medium"/>
+                        </StackLayout>
+                        <StackLayout BackgroundColor="Transparent" x:Name="View_MedicineReminder">
+                            <Label Text="Medicine Reminder:" FontSize="25" ></Label>
+                            <Label x:Name="View_MedicineReminder_content" FontSize="Medium"/>
+                        </StackLayout>
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

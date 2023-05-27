@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="project.Login"
+             NavigationPage.HasNavigationBar="False"
+             >
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Margin="10">
+            <Label Text="Health Point"
+                FontSize="60"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Entry x:Name="EnterUserName"
+            MaxLength="20"
+            BackgroundColor="WhiteSmoke"
+            FlexLayout.Grow="10"
+            FontSize="20"
+            Placeholder="User Name"
+            PlaceholderColor="Gray"
+            ></Entry>
+            <Entry x:Name="EnterPassword"
+            MaxLength="7"
+            IsPassword="True"
+            BackgroundColor="WhiteSmoke"
+            FlexLayout.Grow="10"
+            FontSize="20"
+            Placeholder="User Password"
+            PlaceholderColor="Gray"
+            ></Entry>
+            <Button
+            BackgroundColor="FloralWhite"
+            HeightRequest="60"
+            CornerRadius="150"
+            Text="Sign in/Login"
+            Font="20"
+            TextTransform="None"
+            Clicked="Button_Clicked"
+            ></Button>
+            <Label x:Name="AlertMsg" IsEnabled="False" Text="" FontSize="20" TextColor="Red"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

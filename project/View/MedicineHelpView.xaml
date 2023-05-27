@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasBackButton="False"
+
+             x:Class="project.MedicineHelpView">
+    <!--<ActivityIndicator IsRunning="True"
+                   VerticalOptions="CenterAndExpand" />-->
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" >
+            <StackLayout.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Right" Swiped="SwipeGestureRecognizer_Swiped"  />
+            </StackLayout.GestureRecognizers>
+            <Label Text="Medical Help " VerticalTextAlignment="Center" TextColor="white" FontAttributes="Bold" FontSize="30"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout Margin="20">
+            
+
+            <SearchBar x:Name="FindingBar" BackgroundColor="White" PlaceholderColor="DimGray" Placeholder="Doctor /Loction"
+                        TextChanged="SearchBar_TextChanged">
+                
+            </SearchBar>
+            <ListView x:Name="DoctersResults"  RowHeight="140"   Margin="10" RefreshControlColor="FloralWhite" ItemSelected="DoctersResults_ItemSelected">
+                <ListView.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Right" Swiped="SwipeGestureRecognizer_Swiped" />
+                </ListView.GestureRecognizers>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+
+                            <StackLayout Orientation="Horizontal" Spacing="5" Margin="10" VerticalOptions="CenterAndExpand">
+
+                                <Label HorizontalOptions="StartAndExpand" LineBreakMode="CharacterWrap" TextColor="#212121">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span  Text="{Binding DocName, StringFormat='Dr. {0}--'}" FontSize="18" FontAttributes="Bold" />
+                                            <Span  Text="{Binding DocLocation }" FontSize="15" FontAttributes="Bold"/>
+                                            <Span Text="{x:Static x:Environment.NewLine}" />
+                                            <Span Text="{Binding DocOpenHr, StringFormat='Open Hour:{0}'}" FontSize="Small"/>
+                                            <Span Text="{x:Static x:Environment.NewLine}" />
+                                            <Span Text="{Binding DocNO, StringFormat='N.o.:{0}'}" FontSize="Small"/>
+                                            <Span Text="{x:Static x:Environment.NewLine}" />
+                                            <Span Text="{Binding  DocType}" FontSize="12"/>
+                           
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Image Source="{Binding DocPhoto }" HeightRequest="90" HorizontalOptions="End" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+              
+                    
+                    <!-- 
+                  <ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>mono</x:String>
+                        <x:String>Iove u</x:String>
+                        <x:String>monotouch</x:String>
+                        <x:String>monorail</x:String>
+                        <x:String>monodevelop</x:String>
+                        <x:String>monotone</x:String>
+                        <x:String>monopoly</x:String>
+                        <x:String>monomodal</x:String>
+                        <x:String>mononucleosis</x:String>
+                    </x:Array>
+                 </ListView.ItemsSource>
+                    --> 
+                   
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

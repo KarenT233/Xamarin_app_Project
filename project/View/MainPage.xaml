@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:project="clr-namespace:project" 
+             x:DataType="project:MainPage"
+                  x:Class="project.MainPage"
+                  NavigationPage.HasBackButton="False"
+                  MasterBehavior="Split"
+                   IsPresented="False">
+    
+   <NavigationPage.TitleView>
+            <StackLayout Orientation="Horizontal" >
+            <ImageButton Source="profileUserIcon.png" HeightRequest="40" Margin="1,3,3,3" HorizontalOptions="Center" Clicked="ImageButton_Clicked" BackgroundColor="Transparent"/>
+                <Label Text="Home" VerticalTextAlignment="Center" TextColor="White" FontAttributes="Bold" FontSize="30"/>
+            </StackLayout>
+    
+        </NavigationPage.TitleView>
+    
+    <MasterDetailPage.Master  >
+        <ContentPage Title = "Master" BackgroundColor = "#48cae4" FlowDirection="LeftToRight" WidthRequest="70">
+            <StackLayout Margin="10">
+                <Frame  
+                    HeightRequest="90" 
+                    WidthRequest="90"  HorizontalOptions="Center" 
+                      CornerRadius="100" 
+                       Padding="0"
+                       IsClippedToBounds="True">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer NumberOfTapsRequired="2" Tapped="TapGestureRecognizer_Tapped_Icon"/>
+                    </Frame.GestureRecognizers>
+                    <Image x:Name="Icon" BackgroundColor="White" HorizontalOptions="Center"  VerticalOptions="Start" Aspect="AspectFill" >
+
+                    </Image>
+                </Frame>
+                <Label x:Name="UserName" 
+               FontSize="Large" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                <Label x:Name="UserGivenID"  FontSize="Medium" HorizontalTextAlignment="Center" TextColor="Black"></Label>
+                <Label x:Name="info"/>
+                <Button x:Name="Setting" Text="Setting" Clicked="Setting_Clicked"/>
+                <Button x:Name="Test_ID_Logout_Not_Exist" Text="Test ID Logout not true" Clicked="Test_ID_Logout_Not_true_Clicked"/>
+
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <ContentPage >
+            <StackLayout>
+            <Label x:Name="Notice"
+            TextColor="PaleVioletRed"    
+               BackgroundColor="#FFDADA"
+               FontSize="20"
+               HeightRequest="40"
+               Text="Don't Forget to eat medicine!"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center"
+               ></Label>
+            
+                <StackLayout>
+                   
+                    <Grid 
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand"
+            Margin="25,15,25,15"
+            RowSpacing="30">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="250"></RowDefinition>
+                            <RowDefinition Height="250"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Frame
+                Grid.Row="0"
+                Grid.Column="0"
+                CornerRadius="20"          
+               Padding="0"
+              >
+                            <Image 
+                    HeightRequest="240"
+                    Aspect="AspectFill"
+                    Source="https://www.word-nerds.com.au/wp-content/uploads/2015/07/Document-Editing-1030x687.jpg"
+                   Opacity="0.7"
+                    ></Image>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer
+                    Tapped="TapGestureRecognizer_Tapped"
+                    CommandParameter="Record"
+                    NumberOfTapsRequired="1"  />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+
+                            <Label  Grid.Row="0"
+                Grid.Column="0"
+                 Text="Record"
+                 TextColor="#212121"
+                        FontSize="50"
+                        Margin="15"
+                        VerticalOptions="End"
+                        HorizontalOptions="Start"
+                      
+                        >
+                            </Label>
+
+                        <Frame
+                Grid.Row="1"
+                Grid.Column="0"
+                CornerRadius="20"          
+               Padding="0"
+              >
+                            <Image 
+                    HeightRequest="240"
+                    Aspect="AspectFill"
+                    Source="https://us.123rf.com/450wm/lenetsnikolai/lenetsnikolai1801/lenetsnikolai180100088/93276008-docter-workplace-with-a-stethoscope-cardiogram-chart-with-medical-table-closeup-for-heart-record.jpg?ver=6"
+                   Opacity="0.7"
+                    ></Image>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer
+                    Tapped="TapGestureRecognizer_Tapped"
+                    CommandParameter="Medicine Help"
+                    NumberOfTapsRequired="1"  />
+                                </Frame.GestureRecognizers>
+                            </Frame>
+                            <Label  
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Medical Help"
+                    TextColor="#212121"
+                        Opacity="1"
+                        FontSize="50"
+                        Margin="15"
+                        VerticalOptions="End"
+                        HorizontalOptions="Start"
+                        >
+                            </Label>
+                    </Grid>
+
+                </StackLayout>
+          
+            </StackLayout>
+        </ContentPage>
+    </MasterDetailPage.Detail>
+
+    
+</MasterDetailPage>

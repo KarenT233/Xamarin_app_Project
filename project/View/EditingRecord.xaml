@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+              xmlns:controls="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar"
+            NavigationPage.HasBackButton="False"
+			 x:Class="project.EditingRecord">
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal" >
+            <Label Text="Editing " VerticalTextAlignment="Center" TextColor="white" FontAttributes="Bold" FontSize="30"/>
+            <Label x:Name="Date"  VerticalTextAlignment="Center"  HorizontalOptions="End" TextColor="White" FontAttributes="Bold" FontSize="20" ></Label>
+            <StackLayout.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Right" Swiped="SwipeGestureRecognizer_Swiped" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <StackLayout>
+           
+            <ScrollView>
+
+            <StackLayout Margin="20" VerticalOptions="Fill">
+                    
+                    <Frame x:Name="Calender" HeightRequest="300" WidthRequest="90">
+                    <controls:Calendar
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand"
+                x:Name="GetCanlendar"
+                DateClicked="GetCanlendar_DateClicked"
+                
+                BorderColor="{Binding Source=Switch_Color,Path=OnColor}"
+                DatesBackgroundColor="{Binding Source=Switch_Color,Path=OnColor}"
+                />
+                </Frame>
+
+                <Frame x:Name="BMI"  BackgroundColor="Transparent" Padding="0" >
+                    <StackLayout Orientation="Vertical"  >
+                        <Label Text="BMI:" FontSize="30" VerticalOptions="Center" TextColor="White"></Label>
+                        <StackLayout Orientation="Horizontal" >
+                            <Entry x:Name="Weight"
+						Placeholder="Weight"
+						MaxLength="3"
+						CharacterSpacing="2"
+				        Keyboard="Numeric"
+					    VerticalOptions="Start"
+					    HorizontalOptions="Start"
+					   ></Entry>
+                            <Label Text="Kg" FontSize="20" VerticalOptions="Center"></Label>
+                            <BoxView WidthRequest="25" BackgroundColor="Transparent"/>
+                            <Entry x:Name="Height"
+					    Placeholder="Height"
+						MaxLength="3"
+						CharacterSpacing="2"
+				        Keyboard="Numeric"
+					    VerticalOptions="Start"
+					    HorizontalOptions="Start"
+					   ></Entry>
+                            <Label Text="Cm" FontSize="20" VerticalOptions="Center"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="Diet"  BackgroundColor="Transparent" Padding="0" >
+                    <StackLayout Orientation="Vertical"  >
+                        <Label Text="Diet:" FontSize="30" VerticalOptions="Center" TextColor="White"></Label>
+                        <StackLayout Orientation="Horizontal"  RadioButtonGroup.GroupName="Diet_time"  WidthRequest="100" >
+                            <RadioButton Content="Morning" x:Name="Morning" CheckedChanged="RadioButton_CheckedChanged"></RadioButton>
+                                <RadioButton Content="Lunch" x:Name="Lunch" CheckedChanged="RadioButton_CheckedChanged"></RadioButton>
+                                <RadioButton Content="Dinner" x:Name="Dinner" CheckedChanged="RadioButton_CheckedChanged"></RadioButton>
+                                <RadioButton Content="Extra" x:Name="Extra" CheckedChanged="RadioButton_CheckedChanged"></RadioButton>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <StackLayout Orientation="Horizontal" Spacing="90" HorizontalOptions="Center">
+                    <ImageButton x:Name="Text" Source="pen.png" Aspect="AspectFill"  CornerRadius="180" WidthRequest="60" HeightRequest="60"  Clicked="RecordButton_Clicked"></ImageButton>
+                        <ImageButton  x:Name="Audio" Source="mic.png" Aspect="AspectFill" CornerRadius="180" WidthRequest="60" HeightRequest="60" Clicked="RecordButton_Clicked"></ImageButton>
+                        <ImageButton x:Name="Photo" Source="camera.png"  Aspect="AspectFill" CornerRadius="180" WidthRequest="60" HeightRequest="60" Clicked="RecordButton_Clicked"></ImageButton>
+                </StackLayout>
+
+                <Editor x:Name="TextRecord" HeightRequest="100" BackgroundColor="White" Margin="10" IsVisible="False">
+                </Editor>
+                    <Slider x:Name="VoiceOut" HeightRequest="50" WidthRequest="20" IsVisible="false"></Slider>
+                <Frame x:Name="PhotoRecord" Padding="0" Margin="10" HeightRequest="90" IsVisible="False">
+                    <Image x:Name="Phototaken"  Aspect="AspectFill"></Image>
+
+                    <!--<Label Text="Photo" FontSize="Title"></Label>-->
+                </Frame>
+
+                <Frame x:Name="HeartRate"  BackgroundColor="Transparent" Padding="0" >
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Heart rate:" FontSize="30" TextColor="White"></Label>
+                        <StackLayout Orientation="Horizontal" >
+                            <Entry x:Name="HeartRateBPM"
+						Placeholder="Times"
+						MaxLength="3"
+						CharacterSpacing="2"
+						Keyboard="Numeric"
+					    VerticalOptions="Start"
+					    HorizontalOptions="Start"
+					   ></Entry>
+                            <Label Text="Bpm" FontSize="20" VerticalOptions="Center"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="BloodPressure"  BackgroundColor="Transparent" Padding="0" >
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Blood pressure:" FontSize="30" TextColor="White"></Label>
+                        <StackLayout Orientation="Horizontal" >
+                            <Entry x:Name="BloodPressureSystolic"
+						   Placeholder="Systolic"
+							MaxLength="3"
+							CharacterSpacing="2"
+							Keyboard="Numeric"
+					        VerticalOptions="Start"
+					        HorizontalOptions="Start"
+						   ></Entry>
+                            <Label Text="/" FontSize="20" VerticalOptions="Center"></Label>
+                            <Entry x:Name="BloodPressureDiastolic"
+						   Placeholder="Diastolic"
+							MaxLength="3"
+							 CharacterSpacing="2"
+							 Keyboard="Numeric"
+						    VerticalOptions="Start"
+						     HorizontalOptions="Start"
+						   ></Entry>
+                            <Label Text="mm Hg" FontSize="20" VerticalOptions="Center"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame x:Name="MedicineReminder"  BackgroundColor="Transparent" Padding="0" >
+                    <StackLayout>
+                        <Label  Text="Medicine Reminder:" FontSize="30" TextColor="White"></Label>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Entry x:Name="MedicineType"
+						  Placeholder="Medicine Type"
+						  CharacterSpacing="2"
+						  VerticalOptions="Start"
+						 HorizontalOptions="Start"
+						   ></Entry>
+                            <Picker Title="Times"  x:Name="times" >
+                                <Picker.Items>
+                                    <x:String>0</x:String>
+                                    <x:String>1</x:String>
+                                    <x:String>2</x:String>
+                                    <x:String>3</x:String>
+                                    <x:String>4</x:String>
+                                    <x:String>5</x:String>
+                                    <x:String>6</x:String>
+                                </Picker.Items>
+                                <Picker.SelectedIndex>
+                                    0
+                                </Picker.SelectedIndex>
+                            </Picker>
+                            <Label Text="Times  a" FontSize="20" VerticalOptions="Center"></Label>
+                            <Picker Title="Length" x:Name="Length">
+                                <Picker.Items>
+                                    <x:String>Day</x:String>
+                                    <x:String>Week</x:String>
+                                    <x:String>Month</x:String>
+                                </Picker.Items>
+                                <Picker.SelectedIndex>
+                                    0
+                                </Picker.SelectedIndex>
+                            </Picker>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox x:Name="Eaten" Color="White" IsChecked="False" CheckedChanged="CheckBox_CheckedChanged"/>
+                                <Label x:Name="Remind_times" Text="{Binding Source={x:Reference times}, Path=SelectedIndex,StringFormat=' Remind {0} times'}"  FontSize="20" VerticalOptions="Center"></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame x:Name="Menstruation" BackgroundColor="Transparent" Padding="0" >
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Menstruation Peroid:" FontSize="30" TextColor="White"/>
+                        <Switch x:Name="Switch_Color" IsToggled="False" WidthRequest="80" VerticalOptions="Center" OnColor="Yellow"/>
+                    </StackLayout>
+                </Frame>
+                
+            </StackLayout>
+        </ScrollView>
+            <Button x:Name="Save" HorizontalOptions="CenterAndExpand" Text="Save"  WidthRequest="300"  VerticalOptions="Center" FontSize="Large"
+                Margin="10"
+                CornerRadius="100" Clicked="Save_Clicked"
+                ></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
